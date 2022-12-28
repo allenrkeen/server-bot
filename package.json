@@ -24,6 +24,7 @@
   "homepage": "https://github.com/allenrkeen/server-bot#readme",
   "dependencies": {
     "discord.js": "^14.7.1",
+    "dockerode": "^3.3.4",
     "dotenv": "^16.0.3"
   }
 }
