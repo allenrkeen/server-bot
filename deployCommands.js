@@ -1,3 +1,7 @@
+/*
+This script pushes all commands in the commands folder to be usable in discord.
+*/
+
 require('dotenv').config();
 const token = process.env.DISCORD_TOKEN;
 const clientID = process.env.DISCORD_CLIENT_ID;
