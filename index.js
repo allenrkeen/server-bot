@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
 const token = process.env.DISCORD_TOKEN;
-const clientID = process.env.CLIENT_ID;
+const clientID = process.env.DISCORD_CLIENT_ID;
 
 // Require the necessary discord.js classes
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
@@ -36,7 +36,7 @@ for (const file of commandFiles) {
     }
 }
 //build and display invite link
-const inviteLink = `https://discord.com/oauth2/authorize?client_id=${clientID}&permissions=2147534912&scope=bot%20applications.commands`;
+const inviteLink = 'https://discord.com/oauth2/authorize?client_id='+clientID+'&permissions=2147534912&scope=bot%20applications.commands';
 
 console.log(`Invite link: ${inviteLink}`);
 
