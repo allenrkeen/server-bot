@@ -3,11 +3,11 @@ const Docker = require('node-docker-api').Docker;
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("restartcontainer")
-    .setDescription("Restarts a Docker container")
+    .setName("stopcontainer")
+    .setDescription("Stops a Docker container")
     .addStringOption(option => 
       option.setName('container')
-        .setDescription('The container to restart')
+        .setDescription('The container to stop')
         .setRequired(true)
         .setAutocomplete(true)),
   async autocomplete(interaction) {
@@ -41,21 +41,20 @@ module.exports = {
       const container = interaction.options.getString('container');
       
       // Restart container
-      await interaction.reply(`Restarting container "${container}"...`);
+      await interaction.reply(`Stopping container "${container}"...`);
       const containers = await docker.container.list({ all: true, filters: { name: [container] } });
           if (containers.length === 0) {
             await interaction.followUp(`Container "${container}" does not exist.`);
             throw new Error(`Container "${container}" does not exist.`);
           }
-          await containers[0].restart();
+          await containers[0].stop();
 
-      
       // Confirm that container was restarted
-      await interaction.followUp(`Container "${container}" was successfully restarted.`);
+      await interaction.followUp(`Container "${container}" was successfully stopped.`);
     } catch (error) {
       // Handle error
       console.error(error);
-      await interaction.followUp(`An error occurred while trying to restart the container "${container}".`);
+      await interaction.followUp(`An error occurred while trying to stop the container "${container}".`);
     }
   }
 };

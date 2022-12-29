@@ -12,10 +12,12 @@ const fs = require('node:fs');
 const commands = [];
 
 // Get all commands from the commands folder
+
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+console.log(commandFiles);
 
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
+    const command = require(`../commands/${file}`);
     commands.push(command.data.toJSON());
 }
 
@@ -33,14 +35,15 @@ console.log(commands);
                 Routes.applicationGuildCommands(clientID, guildID),
                 { body: commands },
             );
+            console.log('Successfully reloaded '+ data.length +' commands.');
         } else {
             const data = await rest.put(
                 Routes.applicationCommands(clientID),
                 { body: commands },
             );
+            console.log('Successfully reloaded '+ data.length +' commands.');
         }
 
-        console.log('Successfully reloaded '+ data.length +' commands.');
     } catch (error) {
         console.error(error);
     }
