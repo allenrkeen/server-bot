@@ -23,10 +23,12 @@ for (const file of commandFiles) {
 
 const rest = new REST({ version: '10' }).setToken(token);
 
-console.log(commands);
+// console.log(commands);
 
 (async () => {
     try {
+        const rest = new REST({ version: '10' }).setToken(token);
+        
         console.log('Started refreshing application (/) commands.');
 
         //publish to guild if guildID is set, otherwise publish to global
