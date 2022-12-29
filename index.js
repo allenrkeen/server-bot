@@ -35,6 +35,7 @@ for (const file of commandFiles) {
     }
 }
 
+
 // execute on slash command
 client.on(Events.InteractionCreate, async interaction => {
     if (interaction.isChatInputCommand()) {
