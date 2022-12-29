@@ -10,6 +10,7 @@ Setup is pretty straightforward.
 4. Get the "Application ID" from the General Information tab of your application (This will be referred to as "DISCORD_CLIENT_ID" in .env and docker environment variables)
 5. *Optional:* If you have developer mode enabled in Discord, get your server's ID by right-clicking on the server name and clicking "Copy ID" (This will be referred to as "DISCORD_GUILD_ID" in .env and docker environment variables)
    - If you skip this, it will still work, but commands will be published globally instead of to your server and can take up to an hour to be available in your server.
+   - Using the Server ID will be more secure, making the commands available only in the specified server.
 6. Run the application in your preffered method.
    - Run the docker container with the provided compose or command line below.
       >docker run -v /var/run/docker.sock:/var/run/docker.sock --name server-bot -e DISCORD_TOKEN=your_token_here -e DISOCRD_CLIENT_ID=your_client_id_here -e DISCORD_GUILD_ID=your_guild_id_here allenrkeen/sever-bot:latest 
