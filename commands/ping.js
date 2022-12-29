@@ -1,3 +1,7 @@
+/*
+A ping command that replies with "Pong!" when bot is running.
+*/
+
 const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {

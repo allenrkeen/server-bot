@@ -21,18 +21,26 @@ for (const file of commandFiles) {
 
 const rest = new REST({ version: '10' }).setToken(token);
 
-console.log(rest);
+console.log(commands);
 
 (async () => {
     try {
         console.log('Started refreshing application (/) commands.');
 
-        await rest.put(
-            Routes.applicationCommands(clientID/*, guildID*/),
-            { body: commands },
-        );
+        //publish to guild if guildID is set, otherwise publish to global
+        if (guildID) {
+            const data = await rest.put(
+                Routes.applicationGuildCommands(clientID, guildID),
+                { body: commands },
+            );
+        } else {
+            const data = await rest.put(
+                Routes.applicationCommands(clientID),
+                { body: commands },
+            );
+        }
 
-        console.log('Successfully reloaded application (/) commands.');
+        console.log('Successfully reloaded '+ data.length +' commands.');
     } catch (error) {
         console.error(error);
     }

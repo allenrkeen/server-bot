@@ -1,3 +1,5 @@
+/* A command that lists all containers with their status */
+
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const { spawn } = require('child_process');
 
@@ -23,7 +25,7 @@ module.exports = {
         });
 
         ls.on('close', (code) => {
-            embedCount = Math.ceiling(outArray.length / 25);
+            embedCount = Math.ceil(outArray.length / 25);
             for (let i = 0; i < embedCount; i++) {
                 const embed = new EmbedBuilder()
                     .setTitle('Containers')
