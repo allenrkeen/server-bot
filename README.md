@@ -12,6 +12,7 @@ Setup is pretty straightforward.
    - If you skip this, it will still work, but commands will be published globally instead of to your server and can take up to an hour to be available in your server.
 6. Run the application in your preffered method.
    - Run the docker container with the provided compose or command line below.
+      >docker run -v /var/run/docker.sock:/var/run/docker.sock --name server-bot -e DISCORD_TOKEN=your_token_here -e DISOCRD_CLIENT_ID=your_client_id_here -e DISCORD_GUILD_ID=your_guild_id_here allenrkeen/sever-bot:latest 
    - Clone the repo, cd into the server-bot directory and run "npm install" to install dependencies, then "npm run start" to start the server
 7. The program will build an invite link with the correct permissions and put it in the logs. Click the link and confirm the server to add the bot to.
 
