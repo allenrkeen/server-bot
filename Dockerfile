@@ -7,8 +7,8 @@ RUN npm install
 
 COPY . .
 
-ENV DISCORD_TOKEN ""
-ENV DISCORD_CLIENT_ID ""
-ENV DISCORD_GUILD_ID ""
+ENV DISCORD_TOKEN "" \
+    DISCORD_CLIENT_ID "" \
+    DISCORD_GUILD_ID ""
 
 CMD [ "node", "index.js" ]
