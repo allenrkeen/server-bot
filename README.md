@@ -14,11 +14,15 @@ Setup is pretty straightforward.
    - Using the Server ID will be more secure, making the commands available only in the specified server.
 6. Run the application in your preffered method.
    - Run the docker container with the provided [docker-compose.yml](docker-compose.yml) or the docker run command below.
-      >docker run -v /var/run/docker.sock:/var/run/docker.sock --name server-bot \
+
+      ```bash
+      docker run -v /var/run/docker.sock:/var/run/docker.sock --name server-bot \
       -e DISCORD_TOKEN=your_token_here \
       -e DISCORD_CLIENT_ID=your_client_id_here \
       -e DISCORD_GUILD_ID=your_guild_id_here \
       allenrkeen/server-bot:latest
+      ```
+
    - Clone the repo, cd into the server-bot directory and run "npm install" to install dependencies, then "npm run start" to start the server
 7. The program will build an invite link with the correct permissions and put it in the logs. Click the link and confirm the server to add the bot to.
 
