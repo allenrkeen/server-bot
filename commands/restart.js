@@ -23,8 +23,16 @@ module.exports = {
       const focusedValue = interaction.options.getFocused(true);
       const filteredContainers = runningContainers.filter(container => container.startsWith(focusedValue.value));
       
+      //slice if more than 25
+      let sliced;
+      if (filteredContainers.length > 25) {
+        sliced = filteredContainers.slice(0, 25);
+      } else {
+        sliced = filteredContainers;
+      }
+
       // Respond with filtered list of containers
-      await interaction.respond(filteredContainers.map(container => ({ name: container, value: container })));
+      await interaction.respond(sliced.map(container => ({ name: container, value: container })));
 
     } catch (error) {
       // Handle error
